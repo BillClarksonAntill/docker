@@ -1,0 +1,16 @@
+name: elasticsearch
+type: Microsoft.App/containerApps
+location: australiaeast
+properties:
+  managedEnvironmentId: /subscriptions/<your-subscription-id>/resourceGroups/<your-resource-group>/providers/Microsoft.App/managedEnvironments/opencti-env
+  configuration:
+    registries:
+      - server: opencti.azurecr.io
+        identity: a613dbe2-eb66-4fee-a535-08246186c48f
+  template:
+    containers:
+      - name: elasticsearch
+        image: opencti.azurecr.io/elasticsearch:latest
+        resources:
+          cpu: 0.5
+          memory: 1.0Gi
